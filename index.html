@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restoran Meni</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .menu {
+      padding: 20px;
+    }
+
+    .menu h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .menu-category {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      margin-bottom: 30px;
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .menu-item h3 {
+      margin-top: 10px;
+    }
+
+    .menu-item-description {
+      color: #ccc;
+    }
+
+    .menu-item-price {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .cart-items {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .checkout {
+      text-align: right;
+      margin-bottom: 40px;
+    }
+
+    .checkout h2 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .checkout-total {
+      color: #28a745;
+    }
+
+    @media (max-width: 767px) {
+      .menu-category {
+        display: flex;
+        justify-content: center;
+      }
+
+      .menu-item {
+        display: none;
+      }
+
+      .menu-item.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="menu">
+      <h1>Restoran Meni</h1>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="menu-category" data-category="pica">
+            <h4>Pice</h4>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="menu-category" data-category="salate">
+            <h4>Salate</h4>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="menu-category" data-category="prilozi">
+            <h4>Prilozi</h4>
+          </div>
+        </div>
+        <!-- Dodajte ostale kategorije menija -->
+      </div>
+
+      <div class="menu-items">
+        <div class="menu-item" data-category="pica">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Pizza 1" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Pizza 1</h3>
+              <p class="menu-item-description">Ovo je opis pizze 1.</p>
+              <p class="menu-item-price">$10</p>
+              <button class="btn btn-primary add-to-cart" data-id="1" data-name="Pizza 1" data-price="10">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="pica">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Pizza 2" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Pizza 2</h3>
+              <p class="menu-item-description">Ovo je opis pizze 2.</p>
+              <p class="menu-item-price">$12</p>
+              <button class="btn btn-primary add-to-cart" data-id="2" data-name="Pizza 2" data-price="12">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="salate">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Salata 1" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Salata 1</h3>
+              <p class="menu-item-description">Ovo je opis salate 1.</p>
+              <p class="menu-item-price">$8</p>
+              <button class="btn btn-primary add-to-cart" data-id="3" data-name="Salata 1" data-price="8">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="salate">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Salata 2" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Salata 2</h3>
+              <p class="menu-item-description">Ovo je opis salate 2.</p>
+              <p class="menu-item-price">$6</p>
+              <button class="btn btn-primary add-to-cart" data-id="4" data-name="Salata 2" data-price="6">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="prilozi">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Prilog 1" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Prilog 1</h3>
+              <p class="menu-item-description">Ovo je opis priloga 1.</p>
+              <p class="menu-item-price">$4</p>
+              <button class="btn btn-primary add-to-cart" data-id="5" data-name="Prilog 1" data-price="4">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item" data-category="prilozi">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://via.placeholder.com/400x200" alt="Prilog 2" class="menu-item-image">
+            </div>
+            <div class="col-md-8">
+              <h3>Prilog 2</h3>
+              <p class="menu-item-description">Ovo je opis priloga 2.</p>
+              <p class="menu-item-price">$5</p>
+              <button class="btn btn-primary add-to-cart" data-id="6" data-name="Prilog 2" data-price="5">Dodaj u košaricu</button>
+            </div>
+          </div>
+        </div>
+        <!-- Dodajte ostale stavke menija -->
+      </div>
+
+      <div class="cart-items">
+        <h2>Košarica</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Stavke</h4>
+            <ul class="list-group" id="cart-items-container"></ul>
+          </div>
+          <div class="col-md-6">
+            <h4>Ukupno</h4>
+            <p id="cart-total">$0</p>
+            <button class="btn btn-success" id="checkout-button">Naruči</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var menuCategories = $('.menu-category');
+      var menuItems = $('.menu-item');
+      var cartItemsContainer = $('#cart-items-container');
+      var cartTotal = $('#cart-total');
+      var checkoutButton = $('#checkout-button');
+      var cartItems = [];
+
+      // Inicijalno sakrij sve stavke menija
+      menuItems.hide();
+
+      // Prikazi stavke menija povezane s odabranom kategorijom
+      menuCategories.click(function() {
+        var category = $(this).data('category');
+        menuItems.hide();
+        menuItems.filter('[data-category="' + category + '"]').show();
+      });
+
+      // Dodaj stavku u košaricu
+      $('.add-to-cart').click(function() {
+        var itemId = $(this).data('id');
+        var itemName = $(this).data('name');
+        var itemPrice = $(this).data('price');
+
+        var item = {
+          id: itemId,
+          name: itemName,
+          price: itemPrice
+        };
+
+        cartItems.push(item);
+        updateCartItems();
+      });
+
+      // Ukloni stavku iz košarice
+      function removeItemFromCart(itemId) {
+        cartItems = cartItems.filter(function(item) {
+          return item.id !== itemId;
+        });
+
+        updateCartItems();
+      }
+
+      // Ažuriraj prikaz stavki u košarici
+      function updateCartItems() {
+        cartItemsContainer.empty();
+
+        var total = 0;
+
+        for (var i = 0; i < cartItems.length; i++) {
+          var item = cartItems[i];
+
+          var cartItem = $('<li class="list-group-item"></li>');
+          cartItem.addClass('cart-item');
+          cartItem.html(`
+            <div class="row">
+              <div class="col-md-6">${item.name}</div>
+              <div class="col-md-3">$${item.price}</div>
+              <div class="col-md-3">
+                <button class="btn btn-danger remove-item" data-id="${item.id}">Ukloni</button>
+              </div>
+            </div>
+          `);
+
+          cartItemsContainer.append(cartItem);
+          total += item.price;
+        }
+
+        cartTotal.text('$' + total.toFixed(2));
+
+        $('.remove-item').click(function() {
+          var itemId = $(this).data('id');
+          removeItemFromCart(itemId);
+        });
+      }
+
+      // Naruči - resetiraj košaricu
+      checkoutButton.click(function() {
+        cartItems = [];
+        updateCartItems();
+      });
+    });
+  </script>
+</body>
+
+</html>
